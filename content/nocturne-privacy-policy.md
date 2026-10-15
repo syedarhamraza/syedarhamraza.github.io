@@ -32,4 +32,4 @@ If this policy changes, the new version will be published at this address with a
 
 ## Contact
 
-Questions? Email the developer at the address on Nocturne's Google Play page.
+Questions? Email the developer at [arhamraza399@gmail.com](mailto:arhamraza399@gmail.com).
