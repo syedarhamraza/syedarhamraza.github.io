@@ -1,6 +1,6 @@
 # One Dialer — Privacy Policy
 
-_Last updated: 17 October 2026_
+_Last updated: 25 October 2026_
 
 One Dialer is a phone app for Android made by Syed Arham Raza. This policy explains what the app accesses and what it does with it.
 
@@ -12,8 +12,9 @@ When you make One Dialer your default phone app, Android gives it access to:
 | --- | --- |
 | **Phone** (calls, SIM cards) | Making, answering, holding and ending calls; choosing which SIM to call from |
 | **Call history** | Showing Recents, missed calls and blocked calls; deleting calls you choose to delete |
-| **Contacts** | Showing names and photos for calls, contact search, favourites and speed dial |
+| **Contacts** | Showing names and photos for calls, contact search, favourites and speed dial; importing contacts from your SIM card or a .vcf file you pick, exporting them to a .vcf you share, and merging duplicates (Manage contacts) |
 | **Notifications** | Showing incoming, ongoing and missed calls |
+| **Nearby devices** (Bluetooth) | Showing the names of your connected Bluetooth devices (a watch, earbuds) so you can pick which one a call uses; nothing is sent anywhere |
 | **Blocked numbers** | Blocking and unblocking numbers you choose |
 
 ## Where your data goes
