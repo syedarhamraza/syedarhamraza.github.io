@@ -75,7 +75,7 @@ export function ScreensPan({
   }, []);
 
   return (
-    <section ref={wrap} className="relative overflow-hidden" aria-label="Screens from the app">
+    <section id="screens" ref={wrap} className="relative overflow-hidden" aria-label="Screens from the app">
       <div
         ref={track}
         className="no-scrollbar flex items-center gap-[clamp(1.5rem,4vw,4.5rem)] px-4 py-24 max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto sm:px-8 md:h-[100dvh] md:w-max md:py-0 md:pr-[12vw]"
