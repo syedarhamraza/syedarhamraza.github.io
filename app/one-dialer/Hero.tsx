@@ -87,8 +87,8 @@ export function Hero() {
                 </>
               )}
             </a>
-            <a href="#keypad" className="inline-flex h-14 items-center rounded-[var(--radius-pill)] px-6 text-[16px] font-semibold transition-colors hover:bg-white/[0.06]">
-              Try the keypad
+            <a href="#screens" className="inline-flex h-14 items-center rounded-[var(--radius-pill)] px-6 text-[16px] font-semibold transition-colors hover:bg-white/[0.06]">
+              See the app
             </a>
           </motion.div>
           <motion.p
@@ -112,7 +112,7 @@ export function Hero() {
               transition={{ delay: 0.15, duration: 1.1, ease: settle }}
               className="mx-auto w-[min(72vw,340px)] md:mr-0 md:ml-auto lg:mr-[8%]"
             >
-              <PhoneFrame src="/one-dialer/app/4-incoming.webp" alt="One Dialer's incoming call screen" priority className="shadow-[0_50px_140px_-30px_rgb(110_60_210/0.55),0_0_0_1px_rgb(255_255_255/0.07)]" />
+              <PhoneFrame src="/one-dialer/app/5-incoming.webp" alt="One Dialer's incoming call screen" priority className="shadow-[0_50px_140px_-30px_rgb(110_60_210/0.55),0_0_0_1px_rgb(255_255_255/0.07)]" />
             </motion.div>
           </motion.div>
         </div>

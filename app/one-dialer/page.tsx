@@ -13,8 +13,8 @@ import {
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ScreensPan } from "@/components/ScreensPan";
 import { Hero } from "./Hero";
-import { KeypadDemo } from "./KeypadDemo";
 import { Reveal } from "./Reveal";
+import { WhatsNew } from "./WhatsNew";
 import { BETA, EMAIL, GROUP_URL, PLAY_URL, TESTING_URL } from "./links";
 
 export const metadata: Metadata = {
@@ -28,13 +28,14 @@ export const metadata: Metadata = {
   },
 };
 
-// Real captures of the app (D:\dialer\docs\play, rendered by test/play_store_screenshots_test.dart).
+// Real screenshots from the phone (dialer repo tool/store_graphics/captures, synced by
+// `npm run sync:dialer`).
 const SCREENS = [
-  { src: "/one-dialer/app/1-recents.webp", title: "Calls", body: "Missed calls in red, repeat calls grouped, the keypad one tap away." },
-  { src: "/one-dialer/app/2-keypad.webp", title: "Keypad", body: "Frosted keys over your calls. Type and the right contact rises to the top." },
+  { src: "/one-dialer/app/1-calls.webp", title: "Calls", body: "Missed calls in red, repeat calls grouped, blocked ones marked. The keypad is one tap away." },
+  { src: "/one-dialer/app/2-keypad.webp", title: "Keypad", body: "Frosted keys over your calls, with a Call key for each SIM." },
   { src: "/one-dialer/app/3-contacts.webp", title: "Contacts", body: "Favourites first, then an A–Z index under your thumb." },
-  { src: "/one-dialer/app/4-incoming.webp", title: "Incoming call", body: "Full screen, tinted by the caller, right on the lock screen." },
-  { src: "/one-dialer/app/5-in-call.webp", title: "In call", body: "Big controls for speaker, mute, keypad and hold, with spring motion." },
+  { src: "/one-dialer/app/5-incoming.webp", title: "Incoming call", body: "Full screen, tinted by the caller, right on the lock screen." },
+  { src: "/one-dialer/app/6-in-call.webp", title: "In call", body: "Big glass controls for mute, hold, speaker and the dial pad." },
 ];
 
 const MORE = [
@@ -106,7 +107,7 @@ export default function OneDialer() {
   return (
     <>
       <SmoothScroll />
-      {/* One fixed aurora for the page, in the call screen's violet and the keypad's green. */}
+      {/* One fixed aurora for the page, in the call screen's violet and the Call button's green. */}
       <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-[30vmax] -right-[20vmax] h-[70vmax] w-[70vmax] rounded-full bg-[#6e3cd2] opacity-[0.13] blur-[100px]" />
         <div className="absolute -bottom-[35vmax] -left-[25vmax] h-[70vmax] w-[70vmax] rounded-full bg-[#00c05a] opacity-[0.08] blur-[100px]" />
@@ -128,24 +129,6 @@ export default function OneDialer() {
       <main>
         <Hero />
 
-        {/* Keypad */}
-        <section id="keypad" className={`${section} grid scroll-mt-16 grid-cols-1 items-center gap-16 lg:grid-cols-12`}>
-          <Reveal className="lg:col-span-6">
-            <h2 className={h2}>
-              Type a name.
-              <br />
-              <span className="text-ink-2">With numbers.</span>
-            </h2>
-            <p className="mt-7 max-w-[36ch] text-[18px] leading-relaxed text-ink-2">
-              Smart T9 finds people by any part of their name or number as you type. Try it: 2 5 finds Alex and Alicia, 6 6 2 4 finds Noah.
-            </p>
-            <p className="mt-5 text-[15px] text-ink-3">Works with your keyboard too.</p>
-          </Reveal>
-          <Reveal delay={0.1} className="lg:col-span-6">
-            <KeypadDemo />
-          </Reveal>
-        </section>
-
         <ScreensPan
           screens={SCREENS}
           app="One Dialer"
@@ -156,8 +139,10 @@ export default function OneDialer() {
               <span className="text-ink-2">on true black.</span>
             </>
           }
-          intro="Real screens from the app. Frosted glass, soft glow and spring motion, from the keypad to the call screen."
+          intro="Real screens from the app. Frosted glass, soft glow and spring motion, from your calls to the call screen."
         />
+
+        <WhatsNew />
 
         {/* More */}
         <section className={section}>
