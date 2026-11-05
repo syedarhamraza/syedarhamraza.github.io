@@ -18,7 +18,20 @@ const SCREENS = [
 ];
 
 /** Vertical scroll pans a track of real screens (pinned on desktop, native snap row on phones). */
-export function ScreensPan() {
+type Screen = { src: string; title: string; body: string };
+
+export function ScreensPan({
+  screens = SCREENS.map((s) => ({ ...s, src: `/screens/${s.src}.webp` })),
+  app = "One Spend",
+  heading = (
+    <>
+      The whole app,
+      <br />
+      <span className="text-ink-2">one hand.</span>
+    </>
+  ),
+  intro = "Seven screens from the real app. Dark on true black, so an OLED panel simply switches its pixels off.",
+}: { screens?: Screen[]; app?: string; heading?: React.ReactNode; intro?: string } = {}) {
   const wrap = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);
 
@@ -68,19 +81,13 @@ export function ScreensPan() {
         className="no-scrollbar flex items-center gap-[clamp(1.5rem,4vw,4.5rem)] px-4 py-24 max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto sm:px-8 md:h-[100dvh] md:w-max md:py-0 md:pr-[12vw]"
       >
         <div className="shrink-0 max-md:w-[84vw] md:w-[42vw] md:pl-[4vw]">
-          <h2 className="text-[clamp(2.5rem,5.2vw,5rem)] leading-[0.98] font-bold tracking-[-0.05em]">
-            The whole app,
-            <br />
-            <span className="text-ink-2">one hand.</span>
-          </h2>
-          <p className="mt-6 max-w-[34ch] text-[17px] leading-relaxed text-ink-2">
-            Seven screens from the real app. Dark on true black, so an OLED panel simply switches its pixels off.
-          </p>
+          <h2 className="text-[clamp(2.5rem,5.2vw,5rem)] leading-[0.98] font-bold tracking-[-0.05em]">{heading}</h2>
+          <p className="mt-6 max-w-[34ch] text-[17px] leading-relaxed text-ink-2">{intro}</p>
         </div>
-        {SCREENS.map((s) => (
+        {screens.map((s) => (
           <figure key={s.src} className="w-[min(72vw,300px)] shrink-0 max-md:snap-center md:w-[min(300px,calc((100dvh-230px)/2.17))]">
             <div data-phone className="will-change-transform">
-              <PhoneFrame src={`/screens/${s.src}.webp`} alt={`${s.title} screen in One Spend`} />
+              <PhoneFrame src={s.src} alt={`${s.title} screen in ${app}`} />
             </div>
             <figcaption className="mt-6 px-1">
               <p className="text-[18px] font-semibold tracking-[-0.02em]">{s.title}</p>
