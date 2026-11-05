@@ -12,7 +12,7 @@ const EMPH = new Set(["frosted", "glass."]);
 const settle = [0.2, 0, 0, 1] as const;
 
 /** Headline words rise in; the phone floats in, tilts toward the pointer and drifts on scroll. */
-export function Hero() {
+export function Hero({ phone }: { phone: string }) {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReduced();
   const px = useMotionValue(0);
@@ -112,7 +112,7 @@ export function Hero() {
               transition={{ delay: 0.15, duration: 1.1, ease: settle }}
               className="mx-auto w-[min(72vw,340px)] md:mr-0 md:ml-auto lg:mr-[8%]"
             >
-              <PhoneFrame src="/one-dialer/app/5-incoming.webp" alt="One Dialer's incoming call screen" priority className="shadow-[0_50px_140px_-30px_rgb(110_60_210/0.55),0_0_0_1px_rgb(255_255_255/0.07)]" />
+              <PhoneFrame src={phone} alt="One Dialer's incoming call screen" priority className="shadow-[0_50px_140px_-30px_rgb(110_60_210/0.55),0_0_0_1px_rgb(255_255_255/0.07)]" />
             </motion.div>
           </motion.div>
         </div>

@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -30,12 +33,17 @@ export const metadata: Metadata = {
 
 // Real screenshots from the phone (dialer repo tool/store_graphics/captures, synced by
 // `npm run sync:dialer`).
+// Appends a hash of the file, so a re-synced screenshot under the same name isn't served from
+// browsers' caches.
+const v = (src: string) =>
+  `${src}?v=${createHash("md5").update(readFileSync(path.join(process.cwd(), "public", src))).digest("hex").slice(0, 8)}`;
+
 const SCREENS = [
-  { src: "/one-dialer/app/1-calls.webp", title: "Calls", body: "Missed calls in red, repeat calls grouped, blocked ones marked. The keypad is one tap away." },
-  { src: "/one-dialer/app/2-keypad.webp", title: "Keypad", body: "Frosted keys over your calls, with a Call key for each SIM." },
-  { src: "/one-dialer/app/3-contacts.webp", title: "Contacts", body: "Favourites first, then an A–Z index under your thumb." },
-  { src: "/one-dialer/app/5-incoming.webp", title: "Incoming call", body: "Full screen, tinted by the caller, right on the lock screen." },
-  { src: "/one-dialer/app/6-in-call.webp", title: "In call", body: "Big glass controls for mute, hold, speaker and the dial pad." },
+  { src: v("/one-dialer/app/1-calls.webp"), title: "Calls", body: "Missed calls in red, repeat calls grouped, blocked ones marked. The keypad is one tap away." },
+  { src: v("/one-dialer/app/2-keypad.webp"), title: "Keypad", body: "Frosted keys over your calls, with a Call key for each SIM." },
+  { src: v("/one-dialer/app/3-contacts.webp"), title: "Contacts", body: "Favourites first, then an A–Z index under your thumb." },
+  { src: v("/one-dialer/app/5-incoming.webp"), title: "Incoming call", body: "Full screen, tinted by the caller, right on the lock screen." },
+  { src: v("/one-dialer/app/6-in-call.webp"), title: "In call", body: "Big glass controls for mute, hold, speaker and the dial pad." },
 ];
 
 const MORE = [
@@ -127,7 +135,7 @@ export default function OneDialer() {
       </header>
 
       <main>
-        <Hero />
+        <Hero phone={v("/one-dialer/app/5-incoming.webp")} />
 
         <ScreensPan
           screens={SCREENS}
