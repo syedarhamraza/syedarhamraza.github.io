@@ -7,8 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "npx serve out",
-    "sync": "node scripts/sync-from-app.mjs",
-    "sync:dialer": "node scripts/sync-one-dialer.mjs"
+    "sync": "node scripts/sync-from-app.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
